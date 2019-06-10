@@ -9,14 +9,18 @@ const Wrapper = styled.main`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-bottom: 10rem;
+  padding: 1rem 1rem 10rem;
 `
 
 const Title = styled.h1`
-  font-size: 6rem;
+  font-size: 4rem;
   color: ${props => props.theme.colors.text};
   font-family: 'Staatliches', sans-serif;
   margin-bottom: 2rem;
+
+  @media (min-width: 30rem) {
+    font-size: 6rem;
+  }
 `
 
 const Home = () => (
