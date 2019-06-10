@@ -12,7 +12,7 @@ export async function handler(event) {
 
   const subs = await axios(`https://rest.opensubtitles.org/search/imdbid-${imdbId}/sublanguageid-eng`, {
     headers: {
-      'User-Agent': 'TemporaryUserAgent'
+      'User-Agent': process.env.OPENSUBTITLES_USER_AGENT
     }
   }).then(res => res.data)
 
