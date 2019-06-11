@@ -5,8 +5,7 @@ const colors = {
   placeholder: '#f1f2f6',
   highlight: '#f1f2f6',
   text: '#2f3542',
-  textLight: '#a4b0be',
-  imdb: '#F5C518'
+  textLight: '#a4b0be'
 };
 
 const borderRadius = {

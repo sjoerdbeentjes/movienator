@@ -45,24 +45,13 @@ const Title = styled.h1`
 
 const Description = styled.p``
 
-const Badge = styled.p`
-  display: inline-block;
-  padding: 0.5rem;
-  background-color: ${props => props.theme.colors.imdb};
-`
+const Links = styled.div`
+  display: flex;
+  flex-wrap: wrap;
 
-const TorrentLinks = styled.div`
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  grid-template-rows: repeat(1fr);
-  grid-gap: 0.5rem;
-`
-
-const SubLinks = styled.div`
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  grid-template-rows: repeat(1fr);
-  grid-gap: 0.5rem;
+  a {
+    margin: 0 0.5rem 0.5rem 0;
+  }
 `
 
 const MovieDetail = ({ movie }: { movie: IMovieDetail}) => (
@@ -79,35 +68,39 @@ const MovieDetail = ({ movie }: { movie: IMovieDetail}) => (
       </ContentSection>
 
       <ContentSection>
-        <Badge>IMDb: {movie.rating}</Badge>
+        <ContentSectionTitle>Ratings:</ContentSectionTitle>
+        <Links>
+          <LinkButton
+            href={`https://www.imdb.com/title/${movie.imdb_code}`}
+            backgroundColor="#F5C518"
+          >IMDb: {movie.rating}</LinkButton>
+        </Links>
       </ContentSection>
 
       <ContentSection>
         <ContentSectionTitle>Torrents:</ContentSectionTitle>
-        <TorrentLinks>
+        <Links>
           {movie.torrents.map(torrent => (
             <LinkButton
               href={torrent.url}
               key={torrent.hash}
+              backgroundColor="#B53471"
             >{ torrent.quality } - {torrent.type} ({ torrent.size })</LinkButton>
           ))}
-        </TorrentLinks>
+        </Links>
       </ContentSection>
 
       <ContentSection>
         <ContentSectionTitle>Subtitles:</ContentSectionTitle>
-        <SubLinks>
+        <Links>
           {movie.subs.map(sub => (
             <LinkButton
               href={sub.ZipDownloadLink}
               key={sub.SubHash}
-              style={{
-                backgroundColor: '#0abde3',
-                borderColor: '#0abde3'
-              }}
-            >{sub.SubFileName})</LinkButton>
+              backgroundColor="#0abde3"
+            >{sub.SubFileName}</LinkButton>
           ))}
-        </SubLinks>
+        </Links>
       </ContentSection>
     </Content>
   </Wrapper>

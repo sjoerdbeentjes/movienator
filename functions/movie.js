@@ -10,16 +10,24 @@ export async function handler(event) {
 
   const imdbId = movie.imdb_code.replace('tt', '')
 
-  const subs = await axios(`https://rest.opensubtitles.org/search/imdbid-${imdbId}/sublanguageid-eng`, {
-    headers: {
-      'User-Agent': process.env.OPENSUBTITLES_USER_AGENT
-    }
-  }).then(res => res.data)
-
+  const [subs, credits] = await Promise.all([
+    axios(`https://rest.opensubtitles.org/search/imdbid-${imdbId}/sublanguageid-eng`, {
+      headers: {
+        'User-Agent': process.env.OPENSUBTITLES_USER_AGENT
+      }
+    }).then(res => res.data),
+    axios(`https://api.themoviedb.org/3/movie/${movie.imdb_code}/credits?api_key=58a53eafe77849037d527fa02fde4b4b`, {
+      headers: {
+        'User-Agent': process.env.OPENSUBTITLES_USER_AGENT
+      }
+    }).then(res => res.data)
+  ])
 
   movie.subs = subs
     .map(({ ZipDownloadLink, SubFileName, id, SubHash }) => ({ ZipDownloadLink, SubFileName, id, SubHash }))
     .slice(0, 3)
+
+  movie.cast = credits.cast.slice(0, 10)
 
   return {  
     statusCode: 200,
