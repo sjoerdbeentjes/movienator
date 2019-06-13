@@ -17,7 +17,7 @@ export async function handler(event) {
           'User-Agent': process.env.OPENSUBTITLES_USER_AGENT
         }
       }).then(res => res.data),
-      axios(`https://api.themoviedb.org/3/movie/${movie.imdb_code}/credits?api_key=58a53eafe77849037d527fa02fde4b4b`)
+      axios(`https://api.themoviedb.org/3/movie/${movie.imdb_code}/credits?api_key=${process.env.TMDB_API_KEY}`)
         .then(res => res.data)
         .catch(err => console.log(err))
     ])
