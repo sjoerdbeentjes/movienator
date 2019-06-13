@@ -1,12 +1,17 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import styled from '../styled-components'
 import { IMovieDetail } from '../types/movies'
 import { LinkButton } from '../styled-components/Button';
+import MovieCast from './MovieCast'
 
-const Wrapper = styled.main`
+const Wrapper = styled.div`
+  padding: 2rem 0;
+`
+
+const Top = styled.main`
   max-width: 60rem;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0 2rem;
   min-height: 100%;
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -54,56 +59,65 @@ const Links = styled.div`
   }
 `
 
-const MovieDetail = ({ movie }: { movie: IMovieDetail}) => (
+const MovieDetail = ({ movie }: { movie: IMovieDetail }) => (
   <Wrapper>
-    <Poster src={movie.large_cover_image} alt="" />
+    <Top>
+      <Poster src={movie.large_cover_image} alt="" />
 
-    <Content>
-      <ContentSection>
-        <Title>{ movie.title }</Title>
-      </ContentSection>
+      <Content>
+        <ContentSection>
+          <Title>{movie.title}</Title>
+        </ContentSection>
 
-      <ContentSection>
-        <Description>{ movie.description_intro }</Description>
-      </ContentSection>
+        <ContentSection>
+          <Description>{movie.description_intro}</Description>
+        </ContentSection>
 
-      <ContentSection>
-        <ContentSectionTitle>Ratings:</ContentSectionTitle>
-        <Links>
-          <LinkButton
-            href={`https://www.imdb.com/title/${movie.imdb_code}`}
-            backgroundColor="#F5C518"
-          >IMDb: {movie.rating}</LinkButton>
-        </Links>
-      </ContentSection>
-
-      <ContentSection>
-        <ContentSectionTitle>Torrents:</ContentSectionTitle>
-        <Links>
-          {movie.torrents.map(torrent => (
+        <ContentSection>
+          <ContentSectionTitle>Ratings:</ContentSectionTitle>
+          <Links>
             <LinkButton
-              href={torrent.url}
-              key={torrent.hash}
-              backgroundColor="#B53471"
-            >{ torrent.quality } - {torrent.type} ({ torrent.size })</LinkButton>
-          ))}
-        </Links>
-      </ContentSection>
+              href={`https://www.imdb.com/title/${movie.imdb_code}`}
+              backgroundColor="#F5C518"
+            >
+              IMDb: {movie.rating}
+            </LinkButton>
+          </Links>
+        </ContentSection>
 
-      <ContentSection>
-        <ContentSectionTitle>Subtitles:</ContentSectionTitle>
-        <Links>
-          {movie.subs.map(sub => (
-            <LinkButton
-              href={sub.ZipDownloadLink}
-              key={sub.SubHash}
-              backgroundColor="#0abde3"
-            >{sub.SubFileName}</LinkButton>
-          ))}
-        </Links>
-      </ContentSection>
-    </Content>
+        <ContentSection>
+          <ContentSectionTitle>Torrents:</ContentSectionTitle>
+          <Links>
+            {movie.torrents.map(torrent => (
+              <LinkButton
+                href={torrent.url}
+                key={torrent.hash}
+                backgroundColor="#B53471"
+              >
+                {torrent.quality} - {torrent.type} ({torrent.size})
+              </LinkButton>
+            ))}
+          </Links>
+        </ContentSection>
+
+        <ContentSection>
+          <ContentSectionTitle>Subtitles:</ContentSectionTitle>
+          <Links>
+            {movie.subs.map(sub => (
+              <LinkButton
+                href={sub.ZipDownloadLink}
+                key={sub.SubHash}
+                backgroundColor="#0abde3"
+              >
+                {sub.SubFileName}
+              </LinkButton>
+            ))}
+          </Links>
+        </ContentSection>
+      </Content>
+    </Top>
+    <MovieCast members={movie.cast} />
   </Wrapper>
-)
+);
 
 export default MovieDetail;

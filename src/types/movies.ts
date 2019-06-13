@@ -21,18 +21,7 @@ export interface IMovie {
   title: string
   title_english: string
   title_long: string
-  torrents: [{
-    date_uploaded: string
-    date_uploaded_unix: number
-    hash: string
-    peers: number
-    quality: string
-    seeds: number
-    size: string
-    size_bytes: number
-    type: string
-    url: string
-  }]
+  torrents: ITorrent[]
   url: string
   year: number
   yt_trailer_code: string
@@ -62,13 +51,14 @@ export interface IMovieDetail {
   small_cover_image: string;
   medium_cover_image: string;
   large_cover_image: string;
-  torrents: Torrent[];
+  torrents: ITorrent[];
   date_uploaded: string;
   date_uploaded_unix: number;
-  subs: Sub[]
+  subs: ISub[];
+  cast: ICastMember[];
 }
 
-interface Torrent {
+export interface ITorrent {
   url: string;
   hash: string;
   quality: string;
@@ -81,8 +71,19 @@ interface Torrent {
   date_uploaded_unix: number;
 }
 
-interface Sub {
+export interface ISub {
   ZipDownloadLink: string
   SubFileName: string
   SubHash: string
+}
+
+export interface ICastMember {
+  cast_id: number
+  character: string
+  credit_id: string
+  gender: number
+  id: number
+  name: string
+  order: number
+  profile_path: string
 }
