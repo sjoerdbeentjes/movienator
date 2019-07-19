@@ -5,10 +5,19 @@ import axios from 'axios'
 import styled from '../styled-components'
 import { IMovieDetail } from '../types/movies'
 import MovieDetail from '../components/MovieDetail';
+import Spinner from '../components/Spinner';
 
 const Wrapper = styled.main`
   width: 100%;
   height: 100%;
+`
+
+const SpinnerWrapper = styled.main`
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 
 const Movie = ({ match }: RouteComponentProps) => {
@@ -28,7 +37,7 @@ const Movie = ({ match }: RouteComponentProps) => {
 
   return (
     <Wrapper>
-      {loading && <p>Loading movie</p>}
+      {loading && <SpinnerWrapper><Spinner /></SpinnerWrapper>}
       {movieDetail && (
         <MovieDetail movie={movieDetail} />
       )}

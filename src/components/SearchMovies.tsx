@@ -26,7 +26,9 @@ const SearchForm = styled.form`
     border: 1px solid ${props => props.theme.colors.border};
     width: 100%;
     border-radius: ${props => props.theme.borderRadius.default};
+    color: ${props => props.theme.colors.text};
     font-weight: lighter;
+    background-color: rgba(255, 255, 255, 0.05);
     
     &.open {
       border-bottom-left-radius: 0;

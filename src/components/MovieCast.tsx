@@ -68,7 +68,9 @@ const MovieCast = ({ members }: { members: ICastMember[] }) => (
               alt=""
             />
           </Pic>
-          <Name>{member.name}</Name>
+          <Name>
+            {member.name}
+          </Name>
           <CharacterName>{member.character}</CharacterName>
         </CastMember>
       ))}

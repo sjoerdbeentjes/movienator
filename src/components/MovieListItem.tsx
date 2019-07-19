@@ -63,7 +63,7 @@ const MovieTitle = styled(Link)`
 
 const MovieList = ({ movie, isHighlighted }: IMovieListProps) => (
   <ListItem key={movie.id} isHighlighted={isHighlighted}>
-    <img src={movie.medium_cover_image} alt=""/>
+    <img src={`https://yst.am/${movie.medium_cover_image}`} alt=""/>
     <MovieTitle to={`/movie/${movie.id}`}>
       <h3>{movie.title} <span className="year">({movie.year})</span></h3>
     </MovieTitle>

@@ -3,7 +3,7 @@ import SearchMovies from '../components/SearchMovies'
 import styled from '../styled-components';
 
 const Wrapper = styled.main`
-  height: 100%;
+  height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;

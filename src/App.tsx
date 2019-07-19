@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
-import { ThemeProvider, createGlobalStyle } from './styled-components';
+import styled, { ThemeProvider, createGlobalStyle } from './styled-components';
 import { theme } from './theme'
 import Home from './views/Home';
 import About from './views/About';
 import Movie from './views/Movie';
+import DarkModeToggle from './components/DarkModeToggle';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -34,19 +35,33 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const App = () => (
-  <>
-    <GlobalStyle />
-    <ThemeProvider theme={theme}>
-      <BrowserRouter>
-      <Switch>
-        <Route exact={true} path="/" component={Home} />
-        <Route exact={true} path="/about" component={About} />
-        <Route exact={true} path="/movie/:id" component={Movie} />
-      </Switch>
-      </BrowserRouter>
-    </ThemeProvider>
-  </>
-);
+const AppWrapper = styled.div`
+  min-height: 100%;
+  width: 100%;
+  color: ${props => props.theme.colors.text};
+  background-color: ${props => props.theme.colors.backgrounColor};
+`
+
+const App = () => {
+  const [darkMode, setDarkmode] = useState(true)
+
+  return (
+    <>
+      <GlobalStyle />
+      <ThemeProvider theme={{ ...theme, colors: darkMode ? theme.darkColors : theme.colors }}>
+        <AppWrapper>
+          <DarkModeToggle darkMode={darkMode} setDarkMode={setDarkmode}/>
+          <BrowserRouter>
+          <Switch>
+            <Route exact={true} path="/" component={Home} />
+            <Route exact={true} path="/about" component={About} />
+            <Route exact={true} path="/movie/:id" component={Movie} />
+          </Switch>
+          </BrowserRouter>
+        </AppWrapper>
+      </ThemeProvider>
+    </>
+  )
+};
 
 export default App;

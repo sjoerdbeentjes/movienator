@@ -45,7 +45,6 @@ const Poster = styled.div`
 
 const Content = styled.div`
   grid-area: 'content';
-  color: ${props => props.theme.colors.text};
 `
 
 const ContentSection = styled.section`
