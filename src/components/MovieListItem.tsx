@@ -51,6 +51,10 @@ const ListItem = styled("li")<{ isHighlighted: boolean }>`
       top: 0;
     }
   }
+
+  &:last-of-type {
+    border-bottom: none;
+  }
 `
 
 const MovieTitle = styled(Link)`
