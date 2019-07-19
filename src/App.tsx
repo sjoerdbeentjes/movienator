@@ -40,6 +40,7 @@ const AppWrapper = styled.div`
   width: 100%;
   color: ${props => props.theme.colors.text};
   background-color: ${props => props.theme.colors.backgrounColor};
+  transition: color 0.5s ease, background-color 0.5s ease;
 `
 
 const App = () => {
