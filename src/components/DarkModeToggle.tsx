@@ -24,6 +24,7 @@ const IconButton = styled.button`
   width: 100%;
   height: 100%;
   padding: 0.75rem;
+  outline: none;
 `
 
 const DarkModeToggle = ({ darkMode, setDarkMode }: { darkMode: boolean, setDarkMode: Function }) => (

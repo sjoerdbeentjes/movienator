@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import styled, { ThemeProvider, createGlobalStyle } from './styled-components';
 import { theme } from './theme'
@@ -44,7 +44,18 @@ const AppWrapper = styled.div`
 `
 
 const App = () => {
-  const [darkMode, setDarkmode] = useState(true)
+  const [darkMode, setDarkmode] = useState(matchMedia('(prefers-color-scheme: dark)').matches)
+
+  useEffect(() => {
+    const media = window.matchMedia('(prefers-color-scheme: dark)')
+  
+    setDarkmode(media.matches)
+  
+    media.addListener(() => {
+      setDarkmode(media.matches ? true : false)
+    });
+  }, [])
+
 
   return (
     <>
