@@ -1,9 +1,12 @@
 import axios from 'axios'
+require('dotenv').config()
 const safeJsonStringify = require('safe-json-stringify');
+
+console.log(process.env)
 
 export async function handler(event) {
   try {
-    const data = await axios(`https://yts.am/api/v2/movie_details.json`, {
+    const data = await axios(`https://yst.am/api/v2/movie_details.json`, {
       params: event.queryStringParameters
     }).then(res => res.data)
   
@@ -17,7 +20,11 @@ export async function handler(event) {
           'User-Agent': process.env.OPENSUBTITLES_USER_AGENT
         }
       }).then(res => res.data),
-      axios(`https://api.themoviedb.org/3/movie/${movie.imdb_code}/credits?api_key=${process.env.TMDB_API_KEY}`)
+      axios(`https://api.themoviedb.org/3/movie/${movie.imdb_code}/credits`, {
+        params: {
+          api_key: process.env.TMDB_API_KEY
+        }
+      })
         .then(res => res.data)
         .catch(err => console.log(err))
     ])

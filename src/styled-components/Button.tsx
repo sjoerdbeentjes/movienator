@@ -3,6 +3,7 @@ const isDarkColor = require('is-dark-color')
 
 interface IProps {
   backgroundColor: string
+  color?: string
 }
 
 const buttonStyles = css`
@@ -14,7 +15,7 @@ const buttonStyles = css`
   cursor: pointer;
   border: 2px solid ${props => props.backgroundColor};
   background-color: ${(props: IProps) => props.backgroundColor};
-  color: ${(props: IProps) => isDarkColor(props.backgroundColor) ? '#fff' : '#000' };
+  color: ${(props: IProps) => props.color || isDarkColor(props.backgroundColor) ? '#fff' : '#000' };
   overflow: hidden;
 `
 

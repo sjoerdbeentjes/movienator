@@ -24,11 +24,23 @@ const Top = styled.main`
   }
 `
 
-const Poster = styled.img`
+const Poster = styled.div`
+  position: relative;
   align-self: flex-start;
   grid-area: 'poster';
   width: 100%;
-  border-radius: 1rem;
+  padding-bottom: 150%;
+  background-color: ${props => props.theme.colors.placeholder};
+  border-radius: ${props => props.theme.borderRadius.small};
+  overflow: hidden;
+
+  img {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 10;
+  }
 `
 
 const Content = styled.div`
@@ -45,7 +57,7 @@ const ContentSectionTitle = styled.h3`
 `
 
 const Title = styled.h1`
-  font-size: ${props => props.theme.fontSizes.large};
+  font-size: ${props => props.theme.fontSizes.huge};
 `
 
 const Description = styled.p``
@@ -62,7 +74,9 @@ const Links = styled.div`
 const MovieDetail = ({ movie }: { movie: IMovieDetail }) => (
   <Wrapper>
     <Top>
-      <Poster src={movie.large_cover_image} alt="" />
+      <Poster>
+        <img src={`https://yst.am${movie.large_cover_image}`} alt=""/>
+      </Poster>
 
       <Content>
         <ContentSection>
@@ -92,7 +106,8 @@ const MovieDetail = ({ movie }: { movie: IMovieDetail }) => (
               <LinkButton
                 href={torrent.url}
                 key={torrent.hash}
-                backgroundColor="#B53471"
+                backgroundColor="#0077ff"
+                color="#fff"
               >
                 {torrent.quality} - {torrent.type} ({torrent.size})
               </LinkButton>
@@ -107,7 +122,8 @@ const MovieDetail = ({ movie }: { movie: IMovieDetail }) => (
               <LinkButton
                 href={sub.ZipDownloadLink}
                 key={sub.SubHash}
-                backgroundColor="#0abde3"
+                backgroundColor="#0077ff"
+                color="#fff"
               >
                 {sub.SubFileName}
               </LinkButton>

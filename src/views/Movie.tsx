@@ -20,7 +20,7 @@ const Movie = ({ match }: RouteComponentProps) => {
     setLoading(true)
     axios('/.netlify/functions/movie', { params: { movie_id: id } })
       .then((json)  => {
-        const movie: IMovieDetail = json.data // lol
+        const movie: IMovieDetail = json.data
         setMovieDetail(movie)
         setLoading(false)
       })

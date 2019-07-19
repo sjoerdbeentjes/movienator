@@ -121,6 +121,9 @@ const SearchMovies = ({ history }: RouteComponentProps) => {
                     e.persist()
                     searchMovies(e.target.value)
                   },
+                  onBlur(e: React.ChangeEvent<HTMLInputElement>) {
+                    e.preventDefault()
+                  },
                   className: movies && movies.length ? 'open' : ''
                 })}
               />

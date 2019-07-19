@@ -2,37 +2,78 @@ import React from 'react'
 import { ICastMember } from '../types/movies'
 import styled from '../styled-components';
 
+const Wrapper = styled.div`
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 0 2rem;
+`
+
+const Title = styled.h2`
+  font-size: ${props => props.theme.fontSizes.large};
+  margin-bottom: 1rem;
+`
+
 const CastList = styled.ul`
   list-style: none;
-  padding: 0 2rem 0 1.5rem;
+  padding: 0;
   display: flex;
   flex-wrap: nowrap;
+  align-items: flex-start;
   width: 100%;
   overflow-x: auto;
 `
 
 const CastMember = styled.li`
-  flex: 0 0 10rem;
+  flex: 0 0 12.5rem;
+  border-radius: ${props => props.theme.borderRadius.small};
   padding: 1rem;
   border: 1px solid #efefef;
-  margin-left: 1rem;
+  margin-right: 1rem;
 `
 
-const CastPic = styled.img`
-  width: 100%;
+const Pic = styled.div`
+  position: relative;
+  background-color: ${props => props.theme.colors.placeholder};
+  border-radius: ${props => props.theme.borderRadius.small};
+  overflow: hidden;
+  margin-bottom: 0.75rem;
+  padding-bottom: 150%;
+  
+  img {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+  }
+`
+
+const Name = styled.h4`
+  font-size: 1.2rem;
+`
+
+const CharacterName = styled.h4`
+  font-size: 1rem;
+  font-weight: 200;
 `
 
 const MovieCast = ({ members }: { members: ICastMember[] }) => (
-  <CastList>
-    {members.map(member => (
-      <CastMember>
-        <CastPic
-          src={`https://image.tmdb.org/t/p/w200/${member.profile_path}`}
-          alt=""
-        />
-      </CastMember>
-    ))}
-  </CastList>
+  <Wrapper>
+    <Title>Cast</Title>
+    <CastList>
+      {members.map(member => (
+        <CastMember key={member.id}>
+          <Pic>
+            <img
+              src={`https://image.tmdb.org/t/p/w200/${member.profile_path}`}
+              alt=""
+            />
+          </Pic>
+          <Name>{member.name}</Name>
+          <CharacterName>{member.character}</CharacterName>
+        </CastMember>
+      ))}
+    </CastList>
+  </Wrapper>
 );
 
 export default MovieCast
