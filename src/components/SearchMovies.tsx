@@ -1,11 +1,12 @@
 import React from 'react'
-import { debounce } from 'lodash'
+import debounce from 'lodash/debounce'
 import Downshift from 'downshift'
-import { Search, Loader } from 'react-feather';
 import { withRouter, RouteComponentProps } from 'react-router-dom'
 import styled, { css } from '../styled-components'
 import useMovieSearch from '../hooks/useMovieSearch'
 import MovieListItem from './MovieListItem'
+const Search = require('react-feather/dist/icons/search').default;
+const Loader = require('react-feather/dist/icons/loader').default;
 
 const SearchForm = styled.form`
   display: flex;

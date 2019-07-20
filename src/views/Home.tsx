@@ -15,8 +15,9 @@ const Wrapper = styled.main`
 const Title = styled.h1`
   font-size: 4rem;
   color: ${props => props.theme.colors.text};
-  font-family: 'Staatliches', sans-serif;
+  font-family: 'staatlichesregular', sans-serif;
   margin-bottom: 2rem;
+  text-transform: uppercase;
 
   @media (min-width: 30rem) {
     font-size: 6rem;
