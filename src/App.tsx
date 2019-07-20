@@ -7,7 +7,6 @@ import DarkModeToggle from './components/DarkModeToggle';
 const Home =  lazy(() => import('./views/Home'))
 const Movie = lazy(() => import('./views/Movie'))
 
-
 const GlobalStyle = createGlobalStyle`
   * {
     margin: 0;

@@ -27,9 +27,9 @@
     "react-scripts": "3.0.1",
     "react-snap": "^1.23.0",
     "safe-json-stringify": "^1.2.0",
+    "source-map-explorer": "^2.0.1",
     "styled-components": "^4.2.0",
-    "typescript": "3.4.5",
-    "webpack-bundle-analyzer": "^3.3.2"
+    "typescript": "3.4.5"
   },
   "scripts": {
     "start": "run-p start:*",
@@ -41,7 +41,7 @@
     "build:functions": "netlify-lambda build functions",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "analyse": "npm run build:app -- --stats && webpack-bundle-analyzer ./build/bundle-stats.json"
+    "analyse": "npm run build:app && source-map-explorer 'build/static/js/*.js'"
   },
   "eslintConfig": {
     "extends": "react-app"
