@@ -62,8 +62,8 @@ const App = () => {
           <Suspense fallback=''>
             <BrowserRouter>
               <Switch>
-                <Route exact={true} path="/" component={Home} />
-                <Route exact={true} path="/movie/:id" component={Movie} />
+                <Route exact={true} path="/" component={() => <Home />} />
+                <Route exact={true} path="/movie/:id" component={() => <Movie />} />
               </Switch>
             </BrowserRouter>
           </Suspense>

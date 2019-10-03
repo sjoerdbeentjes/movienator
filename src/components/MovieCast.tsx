@@ -24,6 +24,7 @@ const CastList = styled.ul`
 `
 
 const CastMember = styled.li`
+  position: relative;
   flex: 0 0 12.5rem;
   border-radius: ${props => props.theme.borderRadius.small};
   padding: 1rem;
@@ -49,6 +50,20 @@ const Pic = styled.div`
 
 const Name = styled.h4`
   font-size: 1.2rem;
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+    }
+  }
 `
 
 const CharacterName = styled.h4`
@@ -69,7 +84,9 @@ const MovieCast = ({ members }: { members: ICastMember[] }) => (
             />
           </Pic>
           <Name>
-            {member.name}
+            <a href={`https://www.imdb.com/name/${member.imdb_id}`} target="blank" rel="noreferrer">
+              {member.name}
+            </a>
           </Name>
           <CharacterName>{member.character}</CharacterName>
         </CastMember>

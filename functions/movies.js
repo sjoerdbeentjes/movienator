@@ -1,6 +1,6 @@
-import axios from 'axios'
+const axios = require('axios')
 
-export async function handler (event) {
+exports.handler = async function (event) {
   const movies = await axios(`https://yst.am/api/v2/list_movies.json`, {
     params: event.queryStringParameters
   }).then(res => res.data)

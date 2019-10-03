@@ -86,4 +86,5 @@ export interface ICastMember {
   name: string
   order: number
   profile_path: string
+  imdb_id: string
 }
