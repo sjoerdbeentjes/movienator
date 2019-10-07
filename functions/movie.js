@@ -27,7 +27,7 @@ exports.handler = async function (event) {
         .catch(err => console.error(err))
     ])
 
-    const cast = await Promise.all(credits.cast.slice(0, 10).map(member => {
+    const cast = await Promise.all(credits.cast.slice(0, 8).map(member => {
       return axios(`https://api.themoviedb.org/3/person/${member.id}`, {
         params: {
           api_key: process.env.TMDB_API_KEY

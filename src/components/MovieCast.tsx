@@ -14,13 +14,24 @@ const Title = styled.h2`
 `
 
 const CastList = styled.ul`
+  width: 100%;
   list-style: none;
   padding: 0;
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: flex-start;
-  width: 100%;
-  overflow-x: auto;
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: 1fr;
+  
+  @media (min-width: 22rem) {
+    grid-template-columns: 1fr 1fr;    
+  }
+  
+  @media (min-width: 30rem) {
+    grid-template-columns: 1fr 1fr 1fr;    
+  }
+  
+  @media (min-width: 50rem) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;    
+  }
 `
 
 const CastMember = styled.li`
@@ -29,7 +40,6 @@ const CastMember = styled.li`
   border-radius: ${props => props.theme.borderRadius.small};
   padding: 1rem;
   border: 1px solid #efefef;
-  margin-right: 1rem;
 `
 
 const Pic = styled.div`

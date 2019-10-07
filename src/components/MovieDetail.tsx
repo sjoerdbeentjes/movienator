@@ -20,7 +20,7 @@ const Top = styled.main`
                         'content';
 
   @media (min-width: 40rem) {
-    grid-template-columns: minmax(0, 20rem) minmax(0, 1fr);
+    grid-template-columns: minmax(0, calc(50% - 0.5rem)) minmax(0, 1fr);
   }
 `
 
