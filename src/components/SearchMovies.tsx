@@ -1,6 +1,6 @@
 import React from 'react'
 import debounce from 'lodash/debounce'
-import Downshift from 'downshift'
+import Downshift, { DownshiftState, StateChangeOptions } from 'downshift'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
 import styled, { css } from '../styled-components'
 import useMovieSearch from '../hooks/useMovieSearch'
@@ -91,12 +91,12 @@ const MovieList = styled.ul`
   border-bottom-right-radius: ${props => props.theme.borderRadius.default};
 `
 
-function stateReducer(state: any, changes: any) {
+function stateReducer(state: DownshiftState<any>, changes: StateChangeOptions<any>) {
   switch (changes.type) {
-      case Downshift.stateChangeTypes.mouseUp:
-          return {};
-      default:
-          return changes;
+    case Downshift.stateChangeTypes.mouseUp:
+      return {};
+    default:
+      return changes;
   }
 }
 
