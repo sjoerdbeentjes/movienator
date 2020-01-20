@@ -91,6 +91,15 @@ const MovieList = styled.ul`
   border-bottom-right-radius: ${props => props.theme.borderRadius.default};
 `
 
+function stateReducer(state: any, changes: any) {
+  switch (changes.type) {
+      case Downshift.stateChangeTypes.mouseUp:
+          return {};
+      default:
+          return changes;
+  }
+}
+
 const SearchMovies = ({ history }: RouteComponentProps) => {
   const [movies, loading, search] = useMovieSearch()
 
@@ -101,6 +110,7 @@ const SearchMovies = ({ history }: RouteComponentProps) => {
       <Downshift
         onChange={movie => history.push(`/movie/${movie.id}`)}
         itemToString={item => (item ? item.value : '')}
+        stateReducer={stateReducer}
       >
         {({
           getInputProps,

@@ -7,7 +7,7 @@ import MovieCast from './MovieCast'
 import { Link } from 'react-router-dom';
 
 const Wrapper = styled.div`
-  padding: 5rem 0 2rem;
+  padding: 3rem 0 2rem;
 `
 
 const Top = styled.main`
