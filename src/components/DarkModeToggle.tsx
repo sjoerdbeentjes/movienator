@@ -9,11 +9,16 @@ const Wrapper = styled.div`
   position: absolute;
   right: 0;
   top: 0;
+  transition: transform 0.2s;
 
   svg {
     stroke: ${props => props.theme.colors.text};
     width: 100%;
     height: 100%;
+  }
+
+  &:hover {
+    transform: rotate(-20deg);
   }
 `
 

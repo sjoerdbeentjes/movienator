@@ -58,12 +58,12 @@ const App = () => {
       <GlobalStyle />
       <ThemeProvider theme={{ ...theme, colors: darkMode ? theme.darkColors : theme.colors }}>
         <AppWrapper>
-          <DarkModeToggle darkMode={darkMode} setDarkMode={setDarkmode}/>
+          <DarkModeToggle darkMode={darkMode} setDarkMode={() => setDarkmode(!darkMode)} />
           <Suspense fallback=''>
             <BrowserRouter>
               <Switch>
-                <Route exact={true} path="/" component={() => <Home />} />
-                <Route exact={true} path="/movie/:id" component={() => <Movie />} />
+                <Route path="/movie/:id" render={() => <Movie />} />
+                <Route path="/" render={() => <Home />} />
               </Switch>
             </BrowserRouter>
           </Suspense>

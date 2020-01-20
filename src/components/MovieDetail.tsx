@@ -70,69 +70,71 @@ const Links = styled.div`
   }
 `
 
-const MovieDetail = ({ movie }: { movie: IMovieDetail }) => (
-  <Wrapper>
-    <Top>
-      <Poster>
-        <img src={`https://yst.am${movie.large_cover_image}`} alt=""/>
-      </Poster>
+const MovieDetail = ({ movie }: { movie: IMovieDetail }) => {
+  return (
+    <Wrapper>
+      <Top>
+        <Poster>
+          <img src={`https://yst.am${movie.large_cover_image}`} alt=""/>
+        </Poster>
 
-      <Content>
-        <ContentSection>
-          <Title>{movie.title}</Title>
-        </ContentSection>
+        <Content>
+          <ContentSection>
+            <Title>{movie.title}</Title>
+          </ContentSection>
 
-        <ContentSection>
-          <Description>{movie.description_intro}</Description>
-        </ContentSection>
+          <ContentSection>
+            <Description>{movie.description_intro}</Description>
+          </ContentSection>
 
-        <ContentSection>
-          <ContentSectionTitle>Ratings:</ContentSectionTitle>
-          <Links>
-            <LinkButton
-              href={`https://www.imdb.com/title/${movie.imdb_code}`}
-              backgroundColor="#F5C518"
-            >
-              IMDb: {movie.rating}
-            </LinkButton>
-          </Links>
-        </ContentSection>
-
-        <ContentSection>
-          <ContentSectionTitle>Torrents:</ContentSectionTitle>
-          <Links>
-            {movie.torrents.map(torrent => (
+          <ContentSection>
+            <ContentSectionTitle>Ratings:</ContentSectionTitle>
+            <Links>
               <LinkButton
-                href={`https://yst.am${torrent.url}`}
-                key={torrent.hash}
-                backgroundColor="#0077ff"
-                color="#fff"
+                href={`https://www.imdb.com/title/${movie.imdb_code}`}
+                backgroundColor="#F5C518"
               >
-                {torrent.quality} - {torrent.type} ({torrent.size})
+                IMDb: {movie.rating}
               </LinkButton>
-            ))}
-          </Links>
-        </ContentSection>
+            </Links>
+          </ContentSection>
 
-        <ContentSection>
-          <ContentSectionTitle>Subtitles:</ContentSectionTitle>
-          <Links>
-            {movie.subs.map(sub => (
-              <LinkButton
-                href={sub.ZipDownloadLink}
-                key={sub.SubHash}
-                backgroundColor="#0077ff"
-                color="#fff"
-              >
-                {sub.SubFileName}
-              </LinkButton>
-            ))}
-          </Links>
-        </ContentSection>
-      </Content>
-    </Top>
-    <MovieCast members={movie.cast} />
-  </Wrapper>
-);
+          <ContentSection>
+            <ContentSectionTitle>Torrents:</ContentSectionTitle>
+            <Links>
+              {movie.torrents.map(torrent => (
+                <LinkButton
+                  href={`https://yst.am${torrent.url}`}
+                  key={torrent.hash}
+                  backgroundColor="#0077ff"
+                  color="#fff"
+                >
+                  {torrent.quality} - {torrent.type} ({torrent.size})
+                </LinkButton>
+              ))}
+            </Links>
+          </ContentSection>
+
+          <ContentSection>
+            <ContentSectionTitle>Subtitles:</ContentSectionTitle>
+            <Links>
+              {movie.subs.map(sub => (
+                <LinkButton
+                  href={sub.ZipDownloadLink}
+                  key={sub.SubHash}
+                  backgroundColor="#0077ff"
+                  color="#fff"
+                >
+                  {sub.SubFileName}
+                </LinkButton>
+              ))}
+            </Links>
+          </ContentSection>
+        </Content>
+      </Top>
+      <MovieCast members={movie.cast} />
+    </Wrapper>
+  )
+};
 
 export default MovieDetail;
