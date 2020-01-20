@@ -17,6 +17,11 @@ const buttonStyles = css`
   background-color: ${(props: IProps) => props.backgroundColor};
   color: ${(props: IProps) => props.color || isDarkColor(props.backgroundColor) ? '#fff' : '#000' };
   overflow: hidden;
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 `
 
 export const Button = styled.button`
