@@ -25,8 +25,6 @@ const Movie = ({ match }: RouteComponentProps) => {
   const [loading, setLoading] = useState(false)
   const { id }: { id?: string } = match.params
 
-  console.log(movieDetail)
-
   useEffect(() => {
     setLoading(true)
     axios('/.netlify/functions/movie', { params: { movie_id: id } })
