@@ -1,7 +1,7 @@
 const axios = require('axios')
 
 exports.handler = async function (event) {
-  const movies = await axios(`https://yst.am/api/v2/list_movies.json`, {
+  const movies = await axios(`https://yst.lt/api/v2/list_movies.json`, {
     params: event.queryStringParameters
   }).then(res => res.data)
 

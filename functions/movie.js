@@ -4,10 +4,10 @@ require('dotenv').config()
 
 exports.handler = async function (event) {
   try {
-    const data = await axios(`https://yst.am/api/v2/movie_details.json`, {
+    const data = await axios(`https://yst.lt/api/v2/movie_details.json`, {
       params: event.queryStringParameters
     }).then(res => res.data)
-  
+
     const { movie } = data.data
   
     const imdbId = movie.imdb_code.replace('tt', '')

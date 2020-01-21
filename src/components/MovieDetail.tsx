@@ -143,7 +143,7 @@ const MovieDetail = ({ movie }: { movie: IMovieDetail }) => {
               <Links>
                 {movie.torrents.map(torrent => (
                   <LinkButton
-                    href={`https://yst.am${torrent.url}`}
+                    href={`https://yst.lt${torrent.url}`}
                     key={torrent.hash}
                     backgroundColor="#0077ff"
                     color="#fff"
